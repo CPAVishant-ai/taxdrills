@@ -1,0 +1,584 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TaxDrills — Daily drills that sharpen your tax prep skills</title>
+<meta name="description" content="Free adaptive practice for CPA students and tax preparers. Individual and business returns — Schedule C, K-1s, credits, penalties — with fresh numbers every drill and 2026 limits.">
+<meta property="og:title" content="TaxDrills — the tax prep gym">
+<meta property="og:description" content="Adaptive tax drills for CPA students. Numbers change every round; weak topics come back until they stick. Updated for TY2026 and OBBBA.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='3' y='3' width='26' height='26' rx='3' fill='%232f6b52'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='15' font-weight='bold' fill='%23f5f0e4' text-anchor='middle'%3ET%3C/text%3E%3C/svg%3E">
+<!-- Vercel Web Analytics: enable "Web Analytics" in your Vercel project settings and this starts tracking visitors automatically. -->
+<script defer src="/_vercel/insights/script.js"></script>
+<!-- AdSense (later): after approval, paste your ad script here and uncomment the two <div class="adslot"> blocks below. -->
+<style>
+:root{
+  --paper:#f5f0e4; --card:#fffdf6; --ink:#20261f; --soft:#6c6f5e;
+  --green:#2f6b52; --green-d:#24523f; --red:#b3402e; --gold:#9a7b2d;
+  --hair:#ddd3ba; --hair2:#cfc4a6;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{
+  background:var(--paper);
+  background-image:repeating-linear-gradient(0deg, rgba(60,50,20,.022) 0 1px, transparent 1px 3px);
+  color:var(--ink);
+  font:16px/1.55 "Iowan Old Style",Georgia,"Times New Roman",serif;
+  display:flex;justify-content:center;padding:0 14px 60px;
+}
+.app{width:100%;max-width:680px}
+.small{font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+.mast{border-bottom:3px double var(--hair2);padding:20px 0 14px;margin-bottom:6px}
+.mastrow{display:flex;justify-content:space-between;align-items:flex-end}
+.brand h1{margin:0;font-size:30px;font-weight:700;letter-spacing:-.4px}
+.brand h1 em{font-style:normal;color:var(--green)}
+.brand .sub{font-size:11px;color:var(--soft);letter-spacing:1.6px;text-transform:uppercase}
+.meters{display:flex;gap:18px;text-align:right}
+.meter b{display:block;font-size:20px;font-variant-numeric:tabular-nums;line-height:1.1}
+.meter span{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--soft)}
+.edition{display:flex;justify-content:space-between;font-size:11px;color:var(--soft);
+  border-bottom:1px solid var(--hair);padding:6px 0;margin-bottom:18px;letter-spacing:.4px}
+.hero{margin:8px 0 26px}
+.hero h2{font-size:34px;line-height:1.15;margin:0 0 10px;letter-spacing:-.5px;font-weight:700}
+.hero h2 mark{background:linear-gradient(transparent 62%, #e9d9a8 0);color:inherit}
+.hero p{font-size:16.5px;color:#4a4f42;max-width:520px;margin:0 0 16px}
+.specimens{display:flex;gap:22px;margin:18px 0 20px;flex-wrap:wrap}
+.spec b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+.spec span{font-size:10.5px;text-transform:uppercase;letter-spacing:1.3px;color:var(--soft)}
+.sect{font-size:11px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);
+  border-bottom:1px solid var(--hair);padding-bottom:5px;margin:26px 0 12px}
+.topics{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:540px){.topics{grid-template-columns:1fr}}
+.topic{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:12px 13px;
+  display:flex;gap:12px;align-items:center;cursor:pointer;transition:border-color .12s}
+.topic:hover{border-color:var(--green)}
+.mono{flex:0 0 46px;height:46px;border:1.5px solid var(--ink);border-radius:4px;display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:12px;letter-spacing:.2px;background:#fff;text-align:center}
+.topic .tt{flex:1;min-width:0}
+.topic .tt b{display:block;font-size:15px;line-height:1.25}
+.topic .tt span{font-size:11.5px;color:var(--soft)}
+.ring{flex:0 0 40px}
+.actions{display:flex;gap:10px;margin:18px 0 6px}
+.btn{font-family:inherit;font-size:15px;font-weight:700;border-radius:5px;padding:12px 18px;cursor:pointer;
+  border:1.5px solid var(--ink);background:var(--card);color:var(--ink)}
+.btn:hover{background:#f3edd9}
+.btn.primary{background:var(--green);border-color:var(--green);color:#fdfaf1}
+.btn.primary:hover{background:var(--green-d)}
+.btn.ghost{border-color:var(--hair2);color:var(--soft);font-weight:600}
+.method{font-size:12.5px;color:var(--soft);margin-top:16px}
+.lessonbar{display:flex;align-items:center;gap:12px;margin:18px 0 16px}
+.quit{background:none;border:none;font-size:20px;color:var(--soft);cursor:pointer;padding:4px}
+.prog{flex:1;height:8px;background:#e7dfc8;border-radius:4px;overflow:hidden}
+.prog>i{display:block;height:100%;background:var(--green);width:0%;transition:width .3s}
+.qcount{font-size:12px;color:var(--soft);font-variant-numeric:tabular-nums}
+.qcard{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:20px;box-shadow:0 1px 0 var(--hair2)}
+.qtopic{font-size:10.5px;text-transform:uppercase;letter-spacing:1.4px;color:var(--gold);margin-bottom:6px;display:flex;justify-content:space-between}
+.qtext{font-size:18.5px;font-weight:600;line-height:1.4;margin-bottom:16px}
+.numin{display:flex;gap:8px;align-items:center}
+.numin .cur{font-size:18px;color:var(--soft)}
+input[type=text],input[type=number]{font:inherit;font-size:18px;padding:10px 12px;border:1.5px solid var(--hair2);
+  border-radius:5px;background:#fff;width:100%;color:var(--ink)}
+input:focus{outline:none;border-color:var(--green)}
+.mcols{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.mitem{border:1.5px solid var(--hair2);border-radius:5px;background:#fff;padding:10px 11px;font-size:14px;
+  cursor:pointer;text-align:left;font-family:inherit;line-height:1.35}
+.mitem.sel{border-color:var(--gold);background:#faf3df}
+.mitem.done{border-color:var(--green);background:#eef3ea;color:var(--green-d);cursor:default}
+.mitem.err{border-color:var(--red);background:#f7e8e4}
+.slots{min-height:44px;border:1.5px dashed var(--hair2);border-radius:5px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.chip{border:1.5px solid var(--ink);border-radius:4px;background:#fff;padding:7px 11px;font-size:14px;cursor:pointer;font-family:inherit}
+.chip.used{opacity:.25;pointer-events:none}
+.slots .chip{background:#eef3ea;border-color:var(--green);cursor:default}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.sortitem{text-align:center;font-size:19px;font-weight:700;border:1.5px solid var(--hair2);border-radius:5px;
+  background:#fff;padding:18px 10px;margin-bottom:12px}
+.bucketrow{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.bucket{font-family:inherit;font-size:15px;font-weight:700;padding:13px;border-radius:5px;cursor:pointer;
+  border:1.5px solid var(--ink);background:var(--card)}
+.bucket:hover{background:#f3edd9}
+.sortprog{font-size:12px;color:var(--soft);text-align:center;margin-top:8px}
+.checkrow{margin-top:16px;display:flex;justify-content:flex-end}
+.fb{margin-top:14px;border-radius:6px;padding:14px 16px;display:none;position:relative;overflow:hidden}
+.fb.show{display:block}
+.fb.ok{background:#eaf1e6;border:1px solid #b9cdb2}
+.fb.no{background:#f6e9e4;border:1px solid #dcb4a8}
+.fb .verdict{font-weight:700;font-size:15px;margin-bottom:3px}
+.fb.ok .verdict{color:var(--green-d)} .fb.no .verdict{color:var(--red)}
+.fb .expl{font-size:14px;color:#3d443c}
+.stamp{position:absolute;right:10px;top:8px;border:2.5px solid;border-radius:4px;padding:2px 10px;
+  font-weight:800;font-size:13px;letter-spacing:2px;transform:rotate(8deg);opacity:.85;font-family:inherit}
+.fb.ok .stamp{color:var(--green-d);border-color:var(--green-d)}
+.fb.no .stamp{color:var(--red);border-color:var(--red)}
+.res{background:var(--card);border:1px solid var(--hair);border-radius:6px;padding:26px;text-align:center;margin-top:18px}
+.res h2{margin:0 0 2px;font-size:24px}
+.res .rsub{color:var(--soft);font-size:13px;margin-bottom:18px}
+.resgrid{display:flex;justify-content:center;gap:26px;margin-bottom:18px}
+.resgrid b{display:block;font-size:26px;font-variant-numeric:tabular-nums}
+.resgrid span{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--soft)}
+.delta{font-size:13.5px;margin:3px 0;display:flex;justify-content:space-between;max-width:320px;margin-inline:auto}
+.delta i{font-style:normal;color:var(--green);font-variant-numeric:tabular-nums}
+.adslot{margin:20px 0;text-align:center}
+footer{border-top:3px double var(--hair2);margin-top:34px;padding-top:14px;color:#8b8a75;font-size:11.5px}
+footer a{color:var(--green);cursor:pointer;text-decoration:underline}
+#privacy{display:none;margin-top:10px;font-size:11.5px;line-height:1.6}
+.shake{animation:sh .3s}
+@keyframes sh{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+
+@media(max-width:480px){
+  .hero h2{font-size:26px}
+  .brand h1{font-size:24px}
+  .mastrow{flex-wrap:wrap;gap:8px}
+  .qtext{font-size:17px}
+  .btn{padding:12px 14px}
+  .bucket{padding:15px 8px;font-size:14px}
+  .mitem{padding:12px 11px}
+  .chip{padding:10px 12px}
+  .specimens{gap:16px}
+}
+html{-webkit-text-size-adjust:100%}
+button{touch-action:manipulation}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="mast">
+    <div class="mastrow">
+      <div class="brand">
+        <h1>Tax<em>Drills</em></h1>
+        <div class="sub small">The tax prep gym · Est. 2026</div>
+      </div>
+      <div class="meters small">
+        <div class="meter"><b id="hXp">0</b><span>XP</span></div>
+        <div class="meter"><b id="hStreak">0</b><span>Day streak</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="edition small"><span>TY2026 EDITION · OBBBA UPDATED</span><span id="edDate"></span></div>
+
+  <main id="view"></main>
+
+  <!-- <div class="adslot">AdSense unit A</div> -->
+
+  <footer class="small">
+    Educational drills on general U.S. federal tax law — not tax, legal, or accounting advice. Dollar limits are for the tax year stated in each question and change annually.
+    &nbsp;·&nbsp;<a id="privLink">Privacy</a>
+    <div id="privacy">TaxDrills stores your progress (XP, streak, topic mastery) in your own browser only — nothing is uploaded. Anonymous visit counts are measured with Vercel Web Analytics (no cookies, no personal data). If ads are shown, the ad provider's policies apply and will be disclosed here.</div>
+  </footer>
+</div>
+
+<script>
+"use strict";
+/* ================= topics ================= */
+const TOPICS=[
+ {id:"basics", m:"1040", name:"Filing Basics", desc:"Statuses, dependents, OBBBA changes"},
+ {id:"income", m:"W-2",  name:"Income", desc:"Wages, 1099s, tips & overtime rules"},
+ {id:"deduct", m:"Sch A",name:"Deductions", desc:"Standard, itemized, the new SALT cap"},
+ {id:"credits",m:"CTC",  name:"Credits", desc:"CTC $2,200, EITC, education"},
+ {id:"se",     m:"Sch C",name:"Self-Employment", desc:"Schedule C, SE tax, QBI"},
+ {id:"invest", m:"Sch D",name:"Investments & Property", desc:"Gains, basis, rentals, §121"},
+ {id:"retire", m:"HSA",  name:"Retirement & Payroll", desc:"2026 limits: IRA, 401(k), HSA, FICA"},
+ {id:"entity", m:"1120-S",name:"Business Entities", desc:"1065, 1120, S-corps, K-1s, basis"},
+ {id:"proc",   m:"4868", name:"Procedure & Penalties", desc:"Deadlines, extensions, safe harbor"}
+];
+
+/* ================= fixed bank ================= */
+const FIXED=[
+/* ---- basics ---- */
+ {t:"basics",tier:1,type:"typein",q:"The main individual income tax return is Form ____.",a:["1040","form 1040"],expl:"Form 1040 — everything else hangs off it via schedules."},
+ {t:"basics",tier:1,type:"order",q:"Put the 1040 math in order:",steps:["Gross income","Adjustments → AGI","Deduction → taxable income","Tax, then credits","Payments → refund or owed"],expl:"Income → AGI → taxable income → tax → credits → payments. This spine is the whole return."},
+ {t:"basics",tier:1,type:"sort",q:"Filing status: which is it?",buckets:["Head of Household","Single"],items:[["Unmarried, pays 60% of home costs for her qualifying child",0],["Unmarried, no dependents",1],["Divorced Dec 28, supports dependent parent in her home",0],["Unmarried, roommate splits all bills 50/50",1]],expl:"HOH = unmarried + over half the home's cost + a qualifying person."},
+ {t:"basics",tier:1,type:"typein",q:"2026 standard deduction, married filing jointly: $____.",a:["32200","32,200","$32,200"],expl:"TY2026: $32,200 MFJ · $16,100 single/MFS · $24,150 HOH."},
+ {t:"basics",tier:2,type:"typein",q:"2026 standard deduction for a single filer: $____.",a:["16100","16,100","$16,100"],expl:"$16,100 for single and MFS in 2026."},
+ {t:"basics",tier:2,type:"typein",q:"OBBBA bonus deduction for taxpayers 65+ (2025–2028): $____ per qualifying person.",a:["6000","6,000","$6,000","6k"],expl:"$6,000 senior deduction, phased out at higher incomes; on top of the regular extra standard deduction for 65+."},
+ {t:"basics",tier:2,type:"match",pairs:[["Qualifying child","Age, relationship, residency & support tests"],["Qualifying relative","Gross income limit + support test"],["MFJ","Combined return, joint liability"],["QSS (surviving spouse)","Keeps joint rates 2 yrs with dependent child"]],expl:"Dependent tests decide credits, HOH, and more — worth cold recall."},
+ {t:"basics",tier:2,type:"typein",q:"Marital status for the whole tax year is fixed on December ____.",a:["31","dec 31","december 31"],expl:"Your Dec 31 status governs the entire year."},
+ {t:"basics",tier:3,type:"sort",q:"Must this person file? (General rules)",buckets:["Likely must file","Likely not required"],items:[["Single, $600 of SE net earnings",0],["Single W-2 earner far below the standard deduction, no other income",1],["Got advance Premium Tax Credit",0],["Dependent with $200 of interest only",1]],expl:"SE income ≥ $400 or APTC reconciliation forces a return even at low income."},
+ {t:"basics",tier:3,type:"sort",q:"New OBBBA deduction or classic itemized?",buckets:["New OBBBA (2025–2028)","Classic Sch A"],items:[["Qualified tips deduction",0],["Qualified overtime deduction",0],["Mortgage interest",1],["Charitable gifts",1],["$6,000 senior bonus",0]],expl:"Tips, overtime, and the senior bonus are temporary OBBBA deductions taken outside Schedule A."},
+/* ---- income ---- */
+ {t:"income",tier:1,type:"match",pairs:[["W-2","Employee wages & withholding"],["1099-NEC","Contractor pay $600+"],["1099-INT","Bank interest"],["1099-K","Card / platform payments"]],expl:"Know the information returns on sight — they drive intake."},
+ {t:"income",tier:1,type:"sort",q:"Taxable or not (federal)?",buckets:["Taxable","Not taxable"],items:[["Tips above the OBBBA deduction cap",0],["Unemployment compensation",0],["Child support received",1],["Municipal bond interest",1],["Gambling winnings",0],["Roth IRA qualified distribution",1]],expl:"Child support and muni interest are the classic non-taxable traps."},
+ {t:"income",tier:2,type:"typein",q:"OBBBA 'no tax on tips': the deduction for qualified tips is capped at $____ per year (2025–2028).",a:["25000","25,000","$25,000","25k"],expl:"Up to $25,000 of qualified tips deductible, income phase-outs apply; payroll taxes still apply."},
+ {t:"income",tier:2,type:"typein",q:"OBBBA overtime deduction cap for a single filer: $____ (2025–2028).",a:["12500","12,500","$12,500"],expl:"$12,500 single / $25,000 MFJ for the premium (half-time) portion of FLSA overtime."},
+ {t:"income",tier:2,type:"typein",q:"Alimony from a divorce finalized after 2018 is ____ to the recipient (taxable / not taxable).",a:["not taxable","nontaxable","not"],expl:"Post-2018 divorces: not income to recipient, not deductible to payer."},
+ {t:"income",tier:2,type:"sort",q:"Earned or unearned income?",buckets:["Earned","Unearned"],items:[["Wages",0],["Sch C net profit",0],["Dividends",1],["Rental income",1]],expl:"Earned vs unearned decides EITC, kiddie tax, and IRA eligibility."},
+ {t:"income",tier:3,type:"typein",q:"OBBBA restored the 1099-K reporting threshold to $____ AND 200+ transactions.",a:["20000","20,000","$20,000","20k"],expl:"Back to the old $20,000 / 200-transaction rule — but the income itself was always taxable."},
+ {t:"income",tier:3,type:"typein",q:"Cancelled debt is generally taxable unless excluded — the classic exclusion is bankruptcy or ____.",a:["insolvency","insolvent"],expl:"Form 982: bankruptcy and insolvency exclusions knock out COD income."},
+/* ---- deduct ---- */
+ {t:"deduct",tier:1,type:"sort",q:"Itemized (Sch A) or above-the-line?",buckets:["Itemized (Sch A)","Above-the-line"],items:[["Mortgage interest",0],["Student loan interest",1],["Charitable gifts",0],["HSA contribution",1],["SALT (capped)",0],["Educator expenses",1]],expl:"Above-the-line adjustments work even without itemizing — find them first."},
+ {t:"deduct",tier:1,type:"typein",q:"2026 SALT deduction cap for most filers: $____.",a:["40400","40,400","$40,400"],expl:"OBBBA raised the cap: $40,400 in 2026 ($20,200 MFS), rising ~1%/yr through 2029, phased down above ~$500k MAGI."},
+ {t:"deduct",tier:2,type:"typein",q:"After 2029 the SALT cap reverts to $____.",a:["10000","10,000","$10,000","10k"],expl:"The higher cap is temporary; it snaps back to $10,000 in 2030."},
+ {t:"deduct",tier:2,type:"typein",q:"Medical expenses count on Sch A only above ____% of AGI.",a:["7.5","7.5%"],expl:"Only the excess over 7.5% of AGI is deductible."},
+ {t:"deduct",tier:2,type:"match",pairs:[["Student loan interest","Max $2,500, above the line"],["Gambling losses","Only to winnings; 90% limit from 2026"],["Home equity interest","Only if used to buy/build/improve"],["Charity for non-itemizers","New deduction from 2026"]],expl:"OBBBA trimmed gambling losses to 90% and added a charitable deduction for standard-deduction filers starting 2026."},
+ {t:"deduct",tier:3,type:"order",q:"Choosing standard vs itemized — the working order:",steps:["Total the Sch A categories","Apply caps (SALT, AGI floors)","Compare to standard deduction","Take the larger","Note state may differ"],expl:"Many states decouple — a federal standard-deduction client can still itemize for state."},
+/* ---- credits ---- */
+ {t:"credits",tier:1,type:"sort",q:"Credit or deduction?",buckets:["Credit","Deduction"],items:[["Child Tax Credit",0],["Mortgage interest",1],["EITC",0],["IRA contribution",1]],expl:"Credits cut tax dollar-for-dollar; deductions only cut taxable income."},
+ {t:"credits",tier:1,type:"typein",q:"Child Tax Credit per qualifying child (OBBBA, indexed): $____.",a:["2200","2,200","$2,200"],expl:"$2,200 per child under 17 with a valid SSN; phase-out from $200k single / $400k MFJ."},
+ {t:"credits",tier:2,type:"typein",q:"The refundable portion of the CTC (Additional CTC) is up to $____ per child.",a:["1700","1,700","$1,700"],expl:"Up to $1,700 refundable even with zero tax liability."},
+ {t:"credits",tier:2,type:"sort",q:"Refundable or nonrefundable?",buckets:["Refundable (can exceed tax)","Nonrefundable"],items:[["EITC",0],["Additional CTC portion",0],["Lifetime Learning Credit",1],["Foreign Tax Credit",1],["AOTC (40% portion)",0],["Child & dependent care",1]],expl:"Refundability is the #1 thing that changes a low-income client's refund."},
+ {t:"credits",tier:2,type:"match",pairs:[["AOTC","First 4 college years, part refundable"],["LLC","Any education, nonrefundable"],["Saver's Credit","Retirement savings, lower incomes"],["PTC","Marketplace health premiums"]],expl:"AOTC vs LLC is a perennial exam and client question."},
+ {t:"credits",tier:3,type:"typein",q:"EITC requires ____ income (one word).",a:["earned"],expl:"No earned income, no EITC — investment income limits also apply."},
+/* ---- se ---- */
+ {t:"se",tier:1,type:"typein",q:"A sole proprietor reports business profit on Schedule ____.",a:["c","schedule c","sch c"],expl:"Schedule C feeds Schedule SE and the 1040."},
+ {t:"se",tier:1,type:"sort",q:"Deductible on Schedule C?",buckets:["Deductible","Not on Sch C"],items:[["Business software",0],["Owner's health insurance premium",1],["Contract labor",0],["Owner's own SE tax",1],["Business meals (50%)",0],["Clothing suitable for daily wear",1]],expl:"Owner health insurance is above-the-line, not a C expense; ordinary street clothing never counts."},
+ {t:"se",tier:2,type:"typein",q:"SE tax applies once net SE earnings reach $____.",a:["400","$400"],expl:"$400 threshold — surprisingly low, catches side hustles."},
+ {t:"se",tier:2,type:"order",q:"Order of the SE calculation:",steps:["Net profit from Sch C","× 92.35%","× 15.3% = SE tax","Deduct half of SE tax","QBI deduction if eligible"],expl:"The 92.35% step is the one everyone forgets."},
+ {t:"se",tier:2,type:"typein",q:"OBBBA made the QBI deduction rate permanent at ____%.",a:["20","20%"],expl:"20% of qualified business income, now permanent with wider phase-in ranges."},
+ {t:"se",tier:3,type:"typein",q:"Bonus depreciation for qualified property acquired after Jan 19, 2025 is ____% (permanent under OBBBA).",a:["100","100%"],expl:"100% expensing restored and made permanent; §179 limits also raised."},
+ {t:"se",tier:3,type:"match",pairs:[["QBI deduction","20% of qualified business income"],["SSTB","Service business phased out at high income"],["Home office","Exclusive & regular use"],["1099-K","Platform income still goes on Sch C"]],expl:"QBI + SSTB rules decide real dollars for consultants and agencies."},
+/* ---- invest ---- */
+ {t:"invest",tier:1,type:"typein",q:"Long-term treatment requires holding MORE than ____ year(s).",a:["1","one","1 year"],expl:"More than one year. One year exactly is still short-term."},
+ {t:"invest",tier:1,type:"match",pairs:[["Basis","Cost + improvements"],["Amount realized","Sale price − selling costs"],["Wash sale","Loss disallowed, 30-day window"],["Stepped-up basis","FMV at date of death"]],expl:"Basis vocabulary is the backbone of Schedule D work."},
+ {t:"invest",tier:2,type:"sort",q:"Short-term or long-term?",buckets:["Short-term","Long-term"],items:[["Bought Mar 1, sold following Feb 20",0],["Bought Jan 10 2024, sold Jun 2 2026",1],["Inherited stock sold a month later",1],["Bought and sold within 11 months",0]],expl:"Inherited property is automatically long-term — a favorite trick question."},
+ {t:"invest",tier:2,type:"typein",q:"Net capital losses offset ordinary income up to $____ per year.",a:["3000","3,000","$3,000"],expl:"$3,000/yr ($1,500 MFS); the rest carries forward."},
+ {t:"invest",tier:2,type:"match",pairs:[["0% LTCG rate","Lowest taxable incomes"],["15% LTCG rate","Most taxpayers"],["20% LTCG rate","Highest incomes"],["28% rate","Collectibles gain"]],expl:"Three main long-term brackets plus the collectibles exception."},
+ {t:"invest",tier:3,type:"typein",q:"Section 121 lets a single filer exclude $____ of gain on a primary home.",a:["250000","250,000","$250,000","250k"],expl:"$250k single / $500k MFJ with 2-of-5-year ownership & use."},
+ {t:"invest",tier:3,type:"typein",q:"§1031 like-kind exchanges are limited to ____ property.",a:["real","real property","real estate"],expl:"Since 2018, only real property held for business/investment qualifies."},
+ {t:"invest",tier:3,type:"sort",q:"Rental (Sch E) or not deductible?",buckets:["Sch E deductible","Not deductible"],items:[["Repairs to tenant unit",0],["Depreciation on rental building",0],["Improvements expensed immediately",1],["Owner's own labor value",1]],expl:"Improvements are capitalized & depreciated — not expensed."},
+/* ---- retire ---- */
+ {t:"retire",tier:1,type:"match",pairs:[["Traditional IRA","Deduct now, taxed later"],["Roth IRA","No deduction, tax-free later"],["401(k)","Employer plan, payroll deferral"],["HSA","Triple tax advantage"]],expl:"The four buckets every individual client asks about."},
+ {t:"retire",tier:1,type:"typein",q:"The employee share of FICA is ____% (SS + Medicare).",a:["7.65","7.65%"],expl:"6.2% Social Security + 1.45% Medicare. Employers match it."},
+ {t:"retire",tier:1,type:"typein",q:"2026 IRA contribution limit (under 50): $____.",a:["7500","7,500","$7,500"],expl:"$7,500 for 2026, +$1,100 catch-up at 50+."},
+ {t:"retire",tier:2,type:"typein",q:"2026 401(k) employee deferral limit (under 50): $____.",a:["24500","24,500","$24,500"],expl:"$24,500 for 2026; +$8,000 catch-up 50+, up to $11,250 for ages 60–63."},
+ {t:"retire",tier:2,type:"typein",q:"2026 HSA limit, self-only coverage: $____.",a:["4400","4,400","$4,400"],expl:"$4,400 self-only / $8,750 family for 2026; requires an HDHP."},
+ {t:"retire",tier:2,type:"typein",q:"2026 Social Security taxable wage base: $____.",a:["184500","184,500","$184,500"],expl:"6.2% SS tax stops at $184,500 of wages in 2026; Medicare has no cap."},
+ {t:"retire",tier:2,type:"sort",q:"Which account for the goal?",buckets:["HSA","Roth IRA"],items:[["Pay medical bills tax-free now",0],["Expects a HIGHER bracket in retirement",1],["Requires HDHP coverage",0],["Tax-free earnings after 59½ + 5 yrs",1]],expl:"HSA needs an HDHP; Roth wins when the future bracket is higher."},
+ {t:"retire",tier:3,type:"typein",q:"Early distributions before 59½ generally add a ____% penalty.",a:["10","10%"],expl:"10% additional tax, unless an exception applies."},
+/* ---- entity ---- */
+ {t:"entity",tier:1,type:"match",pairs:[["Form 1065","Partnership"],["Form 1120","C corporation"],["Form 1120-S","S corporation"],["Schedule K-1","Owner's share of pass-through items"]],expl:"Return-to-entity matching should be instant."},
+ {t:"entity",tier:1,type:"sort",q:"Pass-through or entity-level tax?",buckets:["Pass-through","Entity pays tax"],items:[["Partnership",0],["S corporation",0],["C corporation",1],["Single-member LLC (default)",0]],expl:"Only the C corp pays federal income tax itself (21%)."},
+ {t:"entity",tier:2,type:"typein",q:"The flat C corporation federal tax rate is ____%.",a:["21","21%"],expl:"Flat 21%, made permanent."},
+ {t:"entity",tier:2,type:"typein",q:"An S corporation may have at most ____ shareholders.",a:["100","one hundred"],expl:"100 shareholders, one class of stock, generally U.S. individuals/certain trusts."},
+ {t:"entity",tier:2,type:"sort",q:"S corp owner compensation:",buckets:["Reasonable W-2 wages","Distributions"],items:[["Subject to payroll taxes",0],["Generally not SE/payroll taxed",1],["IRS scrutinizes if too low",0],["Reduce basis when paid",1]],expl:"The wage-vs-distribution split is the S-corp audit hot spot."},
+ {t:"entity",tier:3,type:"order",q:"Sequence for an S-corp loss to reach the 1040:",steps:["Loss on K-1","Stock & debt basis limit","At-risk limit","Passive activity limit","Deduct on 1040"],expl:"Basis → at-risk → passive. Losses die at the first failed gate."},
+ {t:"entity",tier:3,type:"typein",q:"An LLC electing S status files Form ____ to elect.",a:["2553","form 2553"],expl:"Form 2553 (entity classification uses 8832)."},
+/* ---- proc ---- */
+ {t:"proc",tier:1,type:"match",pairs:[["April 15","1040 & 1120 due"],["March 15","1065 & 1120-S due"],["Form 4868","Individual extension"],["Form 7004","Business extension"]],expl:"Pass-throughs are due a month early so K-1s reach owners."},
+ {t:"proc",tier:1,type:"typein",q:"An extension moves the FILING date, not the ____ date.",a:["payment","pay","paying"],expl:"Interest and late-payment penalty run from April 15 regardless."},
+ {t:"proc",tier:2,type:"sort",q:"Which penalty applies?",buckets:["Failure to FILE (5%/mo)","Failure to PAY (0.5%/mo)"],items:[["Skipping the return entirely",0],["Filed on time, paying late",1],["Reaches the 25% cap in 5 months",0],["Minimized by filing even if you can't pay",1]],expl:"Always file. Failure-to-file is ten times the monthly rate."},
+ {t:"proc",tier:2,type:"typein",q:"To amend an individual return you file Form ____.",a:["1040-x","1040x","form 1040-x","form 1040x"],expl:"1040-X, generally within 3 years of the original filing."},
+ {t:"proc",tier:2,type:"typein",q:"General IRS assessment window: ____ years from filing.",a:["3","three","3 years"],expl:"3 years; 6 if >25% income omitted; unlimited for fraud/no return."},
+ {t:"proc",tier:3,type:"typein",q:"High-AGI safe harbor: pay ____% of last year's tax to avoid penalty.",a:["110","110%"],expl:"110% of prior-year tax when AGI > $150k (else 100%), or 90% of current year."}
+];
+
+/* ================= generators — fresh numbers every drill ================= */
+const $=n=>"$"+Math.round(n).toLocaleString();
+const R=(lo,hi,step)=>{const v=lo+Math.random()*(hi-lo);return step?Math.round(v/step)*step:Math.round(v)};
+function gnum(t,tier,q,a,expl){return {t,tier,type:"num",q,a:Math.round(a),tol:Math.max(1,Math.round(a*0.005)),expl}}
+const SALT_CAP=40400, STD_MFJ=32200, CTC=2200, MILE=0.725, SS_BASE=184500;
+const GENS={
+ income:[
+  ()=>{const w=R(38000,140000,500),i=R(120,2600,10),u=R(0,5200,100);
+    return gnum("income",1,`W-2 wages ${$(w)}, 1099-INT ${$(i)}, unemployment ${$(u)}. Total income?`,w+i+u,
+    `All three are taxable: ${$(w)} + ${$(i)} + ${$(u)} = ${$(w+i+u)}.`)},
+  ()=>{const t=R(900,4200,50),w=R(26000,52000,500);
+    return gnum("income",2,`Server earns ${$(w)} in wages plus ${$(t)} in reported tips. Total compensation subject to FICA?`,w+t,
+    `Tips are FICA wages even when income-tax-deductible: ${$(w)} + ${$(t)} = ${$(w+t)}.`)},
+  ()=>{const tips=R(4000,32000,500);const ded=Math.min(25000,tips);
+    return gnum("income",3,`Bartender has ${$(tips)} of qualified tips (income under the phase-out). OBBBA tips deduction?`,ded,
+    `Deduction = lesser of qualified tips or $25,000 → ${$(ded)}.`)}
+ ],
+ deduct:[
+  ()=>{const agi=R(60000,180000,1000),med=R(4000,22000,250);const ded=Math.max(0,med-agi*0.075);
+    return gnum("deduct",2,`AGI ${$(agi)}, unreimbursed medical ${$(med)}. Deductible medical on Sch A?`,ded,
+    `Floor = 7.5% × ${$(agi)} = ${$(agi*0.075)}. Deductible = ${$(med)} − floor = ${$(ded)}.`)},
+  ()=>{const mi=R(6000,19000,250),salt=R(18000,60000,500),ch=R(500,9000,250);const item=mi+Math.min(SALT_CAP,salt)+ch;
+    return gnum("deduct",3,`TY2026: mortgage interest ${$(mi)}, state+local taxes ${$(salt)}, charity ${$(ch)}. Total ITEMIZED deduction (apply the 2026 SALT cap)?`,item,
+    `SALT caps at $40,400 → ${$(Math.min(SALT_CAP,salt))}. Total = ${$(mi)} + ${$(Math.min(SALT_CAP,salt))} + ${$(ch)} = ${$(item)}.`)},
+  ()=>{const mi2=R(2000,18000,100);const ans=mi2*MILE;
+    return gnum("deduct",1,`${mi2.toLocaleString()} business miles at the 2026 rate of 72.5¢. Mileage deduction?`,ans,
+    `${mi2.toLocaleString()} × $0.725 = ${$(ans)}.`)}
+ ],
+ credits:[
+  ()=>{const k=R(1,4);return gnum("credits",1,`${k} qualifying ${k>1?"children":"child"} under 17, income below phase-out. Child Tax Credit at $2,200/child?`,k*CTC,
+    `${k} × $2,200 = ${$(k*CTC)}. Phase-out starts at $200k single / $400k MFJ.`)},
+  ()=>{const q1=R(1500,3800,100);const c=Math.min(2000,q1)+Math.max(0,Math.min(q1-2000,2000))*0.25;
+    return gnum("credits",3,`AOTC: qualified expenses ${$(q1)}. Credit = 100% of first $2,000 + 25% of next $2,000. Total AOTC?`,c,
+    `100% × ${$(Math.min(2000,q1))} + 25% × ${$(Math.max(0,Math.min(q1-2000,2000)))} = ${$(c)}. Max is $2,500.`)}
+ ],
+ se:[
+  ()=>{const p=R(18000,160000,500);const se=p*0.9235*0.153;
+    return gnum("se",2,`Sch C net profit ${$(p)}. Self-employment tax? (× 92.35%, × 15.3%)`,se,
+    `${$(p)} × 92.35% = ${$(p*0.9235)}; × 15.3% = ${$(se)}.`)},
+  ()=>{const p=R(20000,140000,500);const se=p*0.9235*0.153;
+    return gnum("se",2,`Same client, profit ${$(p)}: what's the ABOVE-THE-LINE deduction for SE tax (half of it)?`,se/2,
+    `SE tax ${$(se)} ÷ 2 = ${$(se/2)} deducted as an adjustment.`)},
+  ()=>{const p=R(30000,150000,1000);const qbi=p*0.2;
+    return gnum("se",3,`QBI: qualified business income ${$(p)}, under the threshold, no wage limit. QBI deduction?`,qbi,
+    `20% × ${$(p)} = ${$(qbi)} — taken even with the standard deduction.`)}
+ ],
+ invest:[
+  ()=>{const b=R(4000,60000,250),g=R(1000,30000,250);
+    return gnum("invest",1,`Bought stock for ${$(b)}, sold for ${$(b+g)}. Capital gain?`,g,
+    `Amount realized ${$(b+g)} − basis ${$(b)} = ${$(g)}.`)},
+  ()=>{const cost=R(150000,600000,5000);const dep=cost/27.5;
+    return gnum("invest",3,`Residential rental building (excl. land) ${$(cost)}. Annual straight-line depreciation over 27.5 years?`,dep,
+    `${$(cost)} ÷ 27.5 = ${$(dep)}/yr.`)},
+  ()=>{const st=R(2000,9000,100),loss=R(6000,20000,500);
+    return gnum("invest",2,`ST gains ${$(st)}, LT losses ${$(loss)}. Net loss offsetting ORDINARY income this year? (positive number)`,Math.min(3000,loss-st),
+    `Net loss ${$(loss-st)}; only $3,000 offsets ordinary income; ${$(Math.max(0,loss-st-3000))} carries forward.`)}
+ ],
+ retire:[
+  ()=>{const w=R(30000,170000,500);const f=w*0.0765;
+    return gnum("retire",1,`Employee wage ${$(w)} (under the SS wage base). Employee FICA withheld at 7.65%?`,f,
+    `${$(w)} × 7.65% = ${$(f)}. Employer matches the same.`)},
+  ()=>{const d=R(6000,40000,500);const pen=d*0.10;
+    return gnum("retire",2,`Age 45, no exception, takes ${$(d)} from a traditional IRA. Early-withdrawal PENALTY only?`,pen,
+    `10% × ${$(d)} = ${$(pen)} — plus ordinary tax on the distribution.`)},
+  ()=>{const w=R(190000,260000,1000);const ss=SS_BASE*0.062;
+    return gnum("retire",3,`2026 wages ${$(w)}. Social Security tax withheld (6.2% up to the $184,500 wage base)?`,ss,
+    `Capped: 6.2% × $184,500 = ${$(ss)}. Medicare (1.45%) keeps going with no cap.`)}
+ ],
+ entity:[
+  ()=>{const ti=R(80000,900000,5000);const tax=ti*0.21;
+    return gnum("entity",2,`C corp taxable income ${$(ti)}. Federal tax at the flat rate?`,tax,
+    `${$(ti)} × 21% = ${$(tax)}.`)},
+  ()=>{const pr=R(60000,300000,5000),pct=[25,30,40,50][R(0,3)];const share=pr*pct/100;
+    return gnum("entity",2,`Partnership earns ${$(pr)}; partner owns ${pct}%. K-1 ordinary income share?`,share,
+    `${pct}% × ${$(pr)} = ${$(share)} — taxed to the partner whether or not distributed.`)},
+  ()=>{const basis=R(5000,30000,500),loss=R(20000,60000,1000);const ded=Math.min(basis,loss);
+    return gnum("entity",3,`S-corp shareholder: stock basis ${$(basis)}, K-1 loss ${$(loss)} (at-risk & passive OK). Deductible loss this year?`,ded,
+    `Loss is limited to basis: ${$(ded)}. The remaining ${$(loss-ded)} carries forward until basis is restored.`)}
+ ],
+ proc:[
+  ()=>{const tax=R(2000,30000,250),mo=R(1,5);const pen=Math.min(tax*0.05*mo,tax*0.25);
+    return gnum("proc",2,`${$(tax)} owed, return filed ${mo} month${mo>1?"s":""} late (no extension). Failure-to-FILE penalty at 5%/month?`,pen,
+    `5% × ${mo} = ${mo*5}% × ${$(tax)} = ${$(pen)} (cap 25%).`)},
+  ()=>{const py=R(9000,60000,500);const sh=py*1.10;
+    return gnum("proc",3,`Prior-year tax ${$(py)}, AGI over $150k. Safe-harbor payments needed this year?`,sh,
+    `110% × ${$(py)} = ${$(sh)} paid in evenly to dodge the underpayment penalty.`)}
+ ],
+ basics:[
+  ()=>{const mi=R(4000,16000,250),salt=R(12000,55000,500),ch=R(0,6000,250);
+    const item=mi+Math.min(SALT_CAP,salt)+ch;const ans=Math.max(STD_MFJ,item);
+    return gnum("basics",2,`MFJ 2026, standard deduction $32,200. Itemizable: mortgage int. ${$(mi)}, SALT ${$(salt)} (2026 cap!), charity ${$(ch)}. What deduction do they claim?`,ans,
+    `Itemized = ${$(mi)} + ${$(Math.min(SALT_CAP,salt))} + ${$(ch)} = ${$(item)} vs standard $32,200 → take ${$(ans)}.`)}
+ ]
+};
+
+/* ================= state ================= */
+const DEF={xp:0,streak:0,lastDay:"",mastery:Object.fromEntries(TOPICS.map(t=>[t.id,0])),review:{},recent:[],sessions:0};
+let S;try{S=Object.assign({},DEF,JSON.parse(localStorage.getItem("taxdrills")||"{}"))}catch(e){S=DEF}
+S.mastery=Object.assign(Object.fromEntries(TOPICS.map(t=>[t.id,0])),S.mastery);
+const save=()=>localStorage.setItem("taxdrills",JSON.stringify(S));
+function touchStreak(){const d=new Date().toISOString().slice(0,10);
+  if(S.lastDay===d)return;
+  const y=new Date(Date.now()-864e5).toISOString().slice(0,10);
+  S.streak=(S.lastDay===y)?S.streak+1:1;S.lastDay=d;save()}
+function hdr(){document.getElementById("hXp").textContent=S.xp.toLocaleString();
+  document.getElementById("hStreak").textContent=S.streak}
+
+/* ================= adaptive engine ================= */
+function tierFor(m){return m<35?1:m<65?2:3}
+function pickTopic(){
+  const w=TOPICS.map(t=>({id:t.id,w:Math.pow(110-S.mastery[t.id],1.6)}));
+  const tot=w.reduce((a,b)=>a+b.w,0);let r=Math.random()*tot;
+  for(const x of w){r-=x.w;if(r<=0)return x.id}return w[0].id}
+function itemFor(topic){
+  const tier=Math.min(tierFor(S.mastery[topic])+(Math.random()<.25?1:0),3);
+  const fixed=FIXED.map((f,i)=>({f,i})).filter(x=>x.f.t===topic&&x.f.tier<=tier&&!S.recent.includes(x.i));
+  const gens=GENS[topic]||[];
+  if(gens.length&&(Math.random()<.45||!fixed.length)){
+    for(let k=0;k<6;k++){const g=gens[R(0,gens.length-1)]();if(g.tier<=tier+1)return g}
+    return gens[0]()}
+  const pick=fixed[R(0,fixed.length-1)];
+  S.recent.push(pick.i);if(S.recent.length>40)S.recent.shift();
+  return Object.assign({fixedIdx:pick.i},pick.f)}
+function buildLesson(topicLock){
+  const items=[];const now=Date.now();
+  const due=Object.entries(S.review).filter(([k,d])=>d<=now).slice(0,3);
+  due.forEach(([k])=>{const f=FIXED[+k];if(f&&(!topicLock||f.t===topicLock))items.push(Object.assign({fixedIdx:+k,isReview:true},f))});
+  while(items.length<8){items.push(itemFor(topicLock||pickTopic()))}
+  return items.slice(0,8)}
+
+/* ================= views ================= */
+const V=document.getElementById("view");
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function ringSVG(m){const r=16,c=2*Math.PI*r,off=c*(1-m/100);
+  return `<svg class="ring" width="40" height="40" viewBox="0 0 40 40">
+   <circle cx="20" cy="20" r="${r}" fill="none" stroke="#e7dfc8" stroke-width="5"/>
+   <circle cx="20" cy="20" r="${r}" fill="none" stroke="#2f6b52" stroke-width="5"
+     stroke-dasharray="${c}" stroke-dashoffset="${off}" stroke-linecap="round" transform="rotate(-90 20 20)"/>
+   <text x="20" y="24" text-anchor="middle" font-size="11" font-family="Georgia" fill="#20261f">${Math.round(m)}</text></svg>`}
+function home(){
+  hdr();
+  const rev=Object.values(S.review).filter(d=>d<=Date.now()).length;
+  const fresh=S.sessions===0;
+  V.innerHTML=`
+   ${fresh?`<div class="hero">
+     <h2>Ten minutes a day.<br><mark>Sharper tax instincts</mark> for the season.</h2>
+     <p>Free adaptive drills for CPA students and preparers — individual and business returns. The numbers change every round, so you learn the method, not the answer key. Updated for TY2026 and the One Big Beautiful Bill.</p>
+     <div class="specimens small">
+       <div class="spec"><b>9</b><span>Topic ledgers</span></div>
+       <div class="spec"><b>∞</b><span>Generated drills</span></div>
+       <div class="spec"><b>5</b><span>Question styles</span></div>
+       <div class="spec"><b>$0</b><span>Forever</span></div>
+     </div>
+     <button class="btn primary" id="heroStart" style="font-size:17px;padding:14px 28px">Start your first session</button>
+   </div>`:""}
+   <div class="sect small">The nine ledgers ${rev?`· <span style="color:var(--red)">${rev} review${rev>1?"s":""} due</span>`:""}</div>
+   <div class="topics">${TOPICS.map(t=>`
+     <div class="topic" data-t="${t.id}">
+       <div class="mono">${t.m}</div>
+       <div class="tt"><b>${t.name}</b><span class="small">${t.desc}</span></div>
+       ${ringSVG(S.mastery[t.id])}
+     </div>`).join("")}
+   </div>
+   <div class="actions">
+     <button class="btn primary" id="adaptive" style="flex:1">Practice — adaptive session</button>
+   </div>
+   <div class="method small">Weak ledgers surface more often · misses return on a one-day interval · difficulty tiers unlock as your ring fills · fresh numbers in every computational drill. Tap a ledger to drill one topic.</div>`;
+  V.querySelectorAll(".topic").forEach(el=>el.onclick=()=>lesson(el.dataset.t));
+  document.getElementById("adaptive").onclick=()=>lesson(null);
+  const hs=document.getElementById("heroStart");if(hs)hs.onclick=()=>lesson(null);
+}
+
+/* ================= lesson runtime ================= */
+let L;
+function lesson(topicLock){
+  touchStreak();hdr();
+  L={items:buildLesson(topicLock),i:0,right:0,xp:0,deltas:{},lock:topicLock};
+  renderItem();
+}
+function tname(id){return (TOPICS.find(t=>t.id===id)||{}).name||id}
+function frame(inner,hint){
+  const it=L.items[L.i];
+  V.innerHTML=`
+   <div class="lessonbar">
+     <button class="quit" title="Quit">×</button>
+     <div class="prog"><i style="width:${L.i/L.items.length*100}%"></i></div>
+     <span class="qcount small">${L.i+1}/${L.items.length}</span>
+   </div>
+   <div class="qcard">
+     <div class="qtopic small"><span>${tname(it.t)}${it.isReview?' · REVIEW':''}</span><span>Tier ${it.tier}</span></div>
+     <div class="qtext">${it.q?esc(it.q):"Match the pairs:"}</div>
+     ${inner}
+     <div class="checkrow"><button class="btn primary" id="check" ${hint?'':'style="display:none"'}>Check</button></div>
+   </div>
+   <div class="fb" id="fb"><div class="stamp small" id="stamp"></div><div class="verdict" id="verd"></div><div class="expl small" id="expl"></div>
+     <div class="checkrow"><button class="btn" id="next">Continue →</button></div></div>`;
+  V.querySelector(".quit").onclick=home;
+  document.getElementById("next").onclick=advance;
+}
+function grade(ok,misses,explOverride){
+  const it=L.items[L.i];
+  const fb=document.getElementById("fb");
+  fb.classList.add("show",ok?"ok":"no");
+  document.getElementById("stamp").textContent=ok?"FILED":"AMEND";
+  document.getElementById("verd").textContent=ok?(misses?"Close — filed with notes":"Correct"):"Not quite";
+  document.getElementById("expl").innerHTML=explOverride||esc(it.expl||"");
+  const chk=document.getElementById("check");if(chk)chk.style.display="none";
+  const m=S.mastery[it.t];
+  if(ok){S.mastery[it.t]=Math.min(100,m+(100-m)*0.11*(it.tier*0.6+0.4));L.right++;
+    const gain=10+it.tier*4-(misses?4:0);L.xp+=gain;S.xp+=gain}
+  else{S.mastery[it.t]=Math.max(0,m-m*0.14);L.xp+=2;S.xp+=2}
+  L.deltas[it.t]=(L.deltas[it.t]||0)+(S.mastery[it.t]-m);
+  if(it.fixedIdx!=null){
+    if(!ok)S.review[it.fixedIdx]=Date.now()+864e5;
+    else if(it.isReview)delete S.review[it.fixedIdx];
+  }
+  save();hdr();
+}
+function advance(){L.i++;if(L.i>=L.items.length)return results();renderItem()}
+function results(){
+  S.sessions++;save();
+  const acc=Math.round(L.right/L.items.length*100);
+  V.innerHTML=`<div class="res">
+    <h2>Session filed.</h2><div class="rsub small">${L.lock?tname(L.lock)+" drill":"Adaptive session"} · ${new Date().toLocaleDateString([],{month:"long",day:"numeric"})}</div>
+    <div class="resgrid small">
+      <div><b>+${L.xp}</b><span>XP</span></div>
+      <div><b>${L.right}/${L.items.length}</b><span>Correct</span></div>
+      <div><b>${acc}%</b><span>Accuracy</span></div>
+    </div>
+    ${Object.entries(L.deltas).map(([t,d])=>`<div class="delta small"><span>${tname(t)}</span><i>${d>=0?"+":""}${d.toFixed(1)} mastery</i></div>`).join("")}
+    <div class="actions" style="justify-content:center">
+      <button class="btn primary" id="again">Another session</button>
+      <button class="btn" id="homeB">Ledgers</button>
+    </div></div>
+  <!-- <div class="adslot">AdSense unit B (results screen — best viewability)</div> -->`;
+  document.getElementById("again").onclick=()=>lesson(L.lock);
+  document.getElementById("homeB").onclick=home;
+}
+
+/* ================= item renderers ================= */
+function renderItem(){
+  const it=L.items[L.i];
+  if(it.type==="num"||it.type==="typein")return rInput(it);
+  if(it.type==="match")return rMatch(it);
+  if(it.type==="order")return rOrder(it);
+  if(it.type==="sort")return rSort(it);
+}
+function rInput(it){
+  const isNum=it.type==="num";
+  frame(`<div class="numin">${isNum?'<span class="cur">$</span>':''}
+    <input id="ans" type="${isNum?"number":"text"}" ${isNum?'step="any" inputmode="decimal"':''} autocomplete="off" placeholder="${isNum?"0":"type your answer"}"></div>`,true);
+  const inp=document.getElementById("ans");inp.focus();
+  const check=()=>{
+    const v=inp.value.trim();if(!v)return;
+    let ok;
+    if(isNum){ok=Math.abs(parseFloat(v)-it.a)<=it.tol;
+      grade(ok,0, ok?esc(it.expl):`Answer: <b>${$(it.a)}</b>. ${esc(it.expl)}`)}
+    else{const norm=s=>s.toLowerCase().replace(/[$,\s]/g,"");
+      ok=it.a.some(a=>norm(a)===norm(v));
+      grade(ok,0, ok?esc(it.expl):`Answer: <b>${esc(it.a[0])}</b>. ${esc(it.expl)}`)}
+    inp.disabled=true;
+  };
+  document.getElementById("check").onclick=check;
+  inp.addEventListener("keydown",e=>{if(e.key==="Enter")check()});
+}
+function rMatch(it){
+  const L1=it.pairs.map(p=>p[0]),R1=[...it.pairs.map(p=>p[1])].sort(()=>Math.random()-.5);
+  frame(`<div class="mcols">
+    <div>${L1.map((x,i)=>`<button class="mitem small" data-s="l" data-i="${i}" style="width:100%;margin-bottom:8px">${esc(x)}</button>`).join("")}</div>
+    <div>${R1.map((x)=>`<button class="mitem small" data-s="r" style="width:100%;margin-bottom:8px">${esc(x)}</button>`).join("")}</div></div>`,false);
+  let sel=null,misses=0,done=0;
+  V.querySelectorAll(".mitem").forEach(b=>b.onclick=()=>{
+    if(b.classList.contains("done"))return;
+    if(b.dataset.s==="l"){V.querySelectorAll('[data-s="l"]').forEach(x=>x.classList.remove("sel"));b.classList.add("sel");sel=b;return}
+    if(!sel)return;
+    const want=it.pairs[+sel.dataset.i][1];
+    if(b.textContent===want){b.classList.add("done");sel.classList.add("done");sel.classList.remove("sel");sel=null;done++;
+      if(done===it.pairs.length)grade(misses<=1,misses>0);
+    }else{misses++;b.classList.add("err");setTimeout(()=>b.classList.remove("err"),350)}
+  });
+}
+function rOrder(it){
+  const shuf=[...it.steps].sort(()=>Math.random()-.5);
+  frame(`<div class="slots" id="slots"></div><div class="chips">${shuf.map(s=>`<button class="chip small">${esc(s)}</button>`).join("")}</div>
+   <div class="checkrow"><button class="btn ghost" id="reset" style="margin-right:auto">Reset</button></div>`,false);
+  let pos=0,misses=0;
+  const chips=[...V.querySelectorAll(".chips .chip")];
+  chips.forEach(c=>c.onclick=()=>{
+    if(c.textContent===it.steps[pos]){c.classList.add("used");
+      const s=document.createElement("span");s.className="chip small";s.textContent=(pos+1)+". "+c.textContent;
+      document.getElementById("slots").appendChild(s);pos++;
+      if(pos===it.steps.length)grade(misses<=1,misses>0);
+    }else{misses++;c.classList.add("shake");setTimeout(()=>c.classList.remove("shake"),320)}
+  });
+  document.getElementById("reset").onclick=()=>{pos=0;document.getElementById("slots").innerHTML="";chips.forEach(c=>c.classList.remove("used"))};
+}
+function rSort(it){
+  let idx=0,misses=0;
+  const order=[...it.items].sort(()=>Math.random()-.5);
+  frame(`<div class="sortitem" id="si"></div>
+    <div class="bucketrow">${it.buckets.map((b,i)=>`<button class="bucket" data-i="${i}">${esc(b)}</button>`).join("")}</div>
+    <div class="sortprog small" id="sp"></div>`,false);
+  const show=()=>{document.getElementById("si").textContent=order[idx][0];
+    document.getElementById("sp").textContent=(idx+1)+" of "+order.length};
+  show();
+  V.querySelectorAll(".bucket").forEach(b=>b.onclick=()=>{
+    if(+b.dataset.i===order[idx][1]){idx++;
+      if(idx===order.length)return grade(misses<=1,misses>0);
+      show();
+    }else{misses++;const si=document.getElementById("si");si.classList.add("shake");
+      si.style.borderColor="var(--red)";setTimeout(()=>{si.classList.remove("shake");si.style.borderColor=""},350)}
+  });
+}
+
+/* ================= boot ================= */
+document.getElementById("edDate").textContent=new Date().toLocaleDateString([], {weekday:"long", month:"long", day:"numeric", year:"numeric"});
+document.getElementById("privLink").onclick=()=>{const p=document.getElementById("privacy");p.style.display=p.style.display==="block"?"none":"block"};
+hdr();home();
+</script>
+</body>
+</html>

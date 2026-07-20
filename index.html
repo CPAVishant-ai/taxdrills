@@ -15,11 +15,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,700..900&family=IBM+Plex+Mono:wght@400;600&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <!-- Vercel Web Analytics: enable "Web Analytics" in your Vercel project settings and this starts tracking visitors automatically. -->
 <script defer src="/_vercel/insights/script.js"></script>
-<!-- Google Analytics 4 (for retention + session duration): create a free GA4 property at analytics.google.com,
-     then replace G-XXXXXXXXXX below with your Measurement ID and remove the comment wrappers.
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-XXXXXXXXXX');</script>
--->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-S1ZPGDYRW9"></script>
+<script>
+  window.dataLayer=window.dataLayer||[];
+  function gtag(){dataLayer.push(arguments)}
+  gtag('js',new Date());
+  gtag('config','G-S1ZPGDYRW9');
+</script>
 <!-- AdSense (later): after approval, paste your ad script here and uncomment the two <div class="adslot"> blocks below. -->
 <style>
 :root{
@@ -227,6 +229,8 @@ footer a{color:var(--green);cursor:pointer;text-decoration:underline}
 
 <script>
 "use strict";
+/* ---- analytics helper (no-ops if GA blocked) ---- */
+function track(name,params){try{if(typeof gtag==="function")gtag("event",name,params||{})}catch(e){}}
 /* ================= topics ================= */
 const TOPICS=[
  {id:"basics", m:"1040", name:"Filing Basics", desc:"Statuses, dependents, OBBBA changes"},
@@ -486,7 +490,7 @@ function home(){
      <button class="btn primary" id="adaptive" style="flex:1">Practice - adaptive session</button>
    </div>
    <div class="method small">Weak ledgers surface more often · misses return on a one-day interval · difficulty tiers unlock as your ring fills · fresh numbers in every computational drill. Tap a ledger to drill one topic.</div>`;
-  V.querySelectorAll(".topic").forEach(el=>el.onclick=()=>lesson(el.dataset.t));
+  V.querySelectorAll(".topic").forEach(el=>el.onclick=()=>{track("topic_selected",{topic:el.dataset.t,mastery:Math.round(S.mastery[el.dataset.t])});lesson(el.dataset.t)});
   document.getElementById("adaptive").onclick=()=>lesson(null);
   const hs=document.getElementById("heroStart");if(hs)hs.onclick=()=>lesson(null);
 }
@@ -495,7 +499,8 @@ function home(){
 let L;
 function lesson(topicLock){
   touchStreak();hdr();
-  L={items:buildLesson(topicLock),i:0,right:0,xp:0,deltas:{},lock:topicLock};
+  L={items:buildLesson(topicLock),i:0,right:0,xp:0,deltas:{},lock:topicLock,t0:Date.now()};
+  track("session_start",{mode:topicLock?"topic_drill":"adaptive",topic:topicLock||"mixed",day_streak:S.streak,total_sessions:S.sessions});
   renderItem();
 }
 function tname(id){return (TOPICS.find(t=>t.id===id)||{}).name||id}
@@ -515,7 +520,10 @@ function frame(inner,hint){
    </div>
    <div class="fb" id="fb" aria-live="polite"><div class="stamp small" id="stamp"></div><div class="verdict" id="verd"></div><div class="expl small" id="expl"></div>
      <div class="checkrow"><button class="btn" id="next">Continue →</button></div></div>`;
-  V.querySelector(".quit").onclick=home;
+  V.querySelector(".quit").onclick=function(){
+    track("session_abandoned",{topic:it.t,question_index:L.i+1,total:L.items.length,seconds_in:L.t0?Math.round((Date.now()-L.t0)/1000):0});
+    home();
+  };
   document.getElementById("next").onclick=advance;
 }
 function grade(ok,misses,explOverride){
@@ -535,11 +543,14 @@ function grade(ok,misses,explOverride){
     if(!ok)S.review[it.fixedIdx]=Date.now()+864e5;
     else if(it.isReview)delete S.review[it.fixedIdx];
   }
+  track("question_answered",{topic:it.t,question_type:it.type,tier:it.tier,correct:ok?1:0,is_review:it.isReview?1:0,had_misses:misses?1:0});
   save();hdr();
 }
 function advance(){L.i++;if(L.i>=L.items.length)return results();renderItem()}
 function results(){
   S.sessions++;save();
+  var secs=L.t0?Math.round((Date.now()-L.t0)/1000):0;
+  track("session_complete",{mode:L.lock?"topic_drill":"adaptive",topic:L.lock||"mixed",correct:L.right,total:L.items.length,accuracy_pct:Math.round(L.right/L.items.length*100),xp_earned:L.xp,duration_seconds:secs,day_streak:S.streak});
   const acc=Math.round(L.right/L.items.length*100);
   V.innerHTML=`<div class="res">
     <h2>Session filed.</h2><div class="rsub small">${L.lock?tname(L.lock)+" drill":"Adaptive session"} · ${new Date().toLocaleDateString([],{month:"long",day:"numeric"})}</div>
@@ -634,6 +645,8 @@ function rSort(it){
 }
 
 /* ================= boot ================= */
+track("visit",{returning:S.sessions>0?1:0,day_streak:S.streak,total_sessions:S.sessions,
+  avg_mastery:Math.round(Object.values(S.mastery).reduce((a,b)=>a+b,0)/9)});
 document.getElementById("edDate").textContent=new Date().toLocaleDateString([], {weekday:"long", month:"long", day:"numeric", year:"numeric"});
 document.getElementById("privLink").onclick=()=>{const p=document.getElementById("privacy");p.style.display=p.style.display==="block"?"none":"block"};
 hdr();home();

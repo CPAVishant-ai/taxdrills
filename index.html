@@ -198,6 +198,24 @@ footer a{color:var(--green);cursor:pointer;text-decoration:underline}
   .specimens{width:100%}
   .spec{flex:1;padding:8px 10px}
 }
+
+/* supported by Valim */
+.byline{display:flex;align-items:center;gap:7px;color:#EDE9DF;text-decoration:none;font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;letter-spacing:.08em;white-space:nowrap}
+.byline img{height:15px;width:auto;display:block;filter:brightness(1.35) saturate(1.1)}
+.byline .lab{opacity:.72}
+.byline .nm{font-weight:600;color:#fff;letter-spacing:.06em}
+@media(hover:hover){.byline:hover .nm{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}}
+.support{margin-top:26px;border:1.5px solid var(--hair);background:var(--card);padding:16px 18px;
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.support img{height:26px;width:auto;flex:0 0 auto}
+.support .txt{flex:1;min-width:180px}
+.support .txt b{display:block;font-size:14px;line-height:1.35}
+.support .txt span{font-size:12.5px;color:var(--soft)}
+.support a.cta{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;letter-spacing:.04em;
+  border:1.5px solid var(--ink);padding:9px 14px;text-decoration:none;color:var(--ink);background:var(--paper);white-space:nowrap}
+@media(hover:hover){.support a.cta:hover{background:var(--band)}}
+@media(max-width:480px){.support{gap:10px}.support .txt{min-width:140px}.support a.cta{width:100%;text-align:center}}
 </style>
 </head>
 <body>
@@ -214,11 +232,21 @@ footer a{color:var(--green);cursor:pointer;text-decoration:underline}
       </div>
     </div>
   </div>
-  <div class="edition small"><span>TY2026 · OBBBA-UPDATED FIGURES</span><span id="edDate"></span></div>
+  <div class="edition small"><span>TY2026 · OBBBA-UPDATED FIGURES</span><a class="byline" href="https://valim.ai?utm_source=taxdrills&utm_medium=referral&utm_campaign=supported_by" target="_blank" rel="noopener"><span class="lab">Supported by</span><img src="https://valim.ai/logo.svg" alt="Valim" width="15" height="15" loading="lazy"><span class="nm">VALIM</span></a></div>
 
   <main id="view"></main>
 
   <!-- <div class="adslot">AdSense unit A</div> -->
+
+<div class="support">
+    <img src="https://valim.ai/logo.svg" alt="Valim logo" width="26" height="26" loading="lazy">
+    <div class="txt">
+      <b>Supported by Valim</b>
+      <span class="small">Built and maintained by the team at Valim, ex-Big 4 CPAs using AI to make tax filing faster and more affordable.</span>
+    </div>
+    <a class="cta" href="https://valim.ai?utm_source=taxdrills&utm_medium=referral&utm_campaign=footer"
+       target="_blank" rel="noopener">Visit valim.ai</a>
+  </div>
 
   <footer class="small">
     Educational drills on general U.S. federal tax law - not tax, legal, or accounting advice. Dollar limits are for the tax year stated in each question and change annually.
@@ -647,7 +675,7 @@ function rSort(it){
 /* ================= boot ================= */
 track("visit",{returning:S.sessions>0?1:0,day_streak:S.streak,total_sessions:S.sessions,
   avg_mastery:Math.round(Object.values(S.mastery).reduce((a,b)=>a+b,0)/9)});
-document.getElementById("edDate").textContent=new Date().toLocaleDateString([], {weekday:"long", month:"long", day:"numeric", year:"numeric"});
+var _ed=document.getElementById("edDate");if(_ed)_ed.textContent=new Date().toLocaleDateString([],{weekday:"long",month:"long",day:"numeric",year:"numeric"});
 document.getElementById("privLink").onclick=()=>{const p=document.getElementById("privacy");p.style.display=p.style.display==="block"?"none":"block"};
 hdr();home();
 </script>

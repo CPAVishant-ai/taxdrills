@@ -216,6 +216,28 @@ footer a{color:var(--green);cursor:pointer;text-decoration:underline}
   border:1.5px solid var(--ink);padding:9px 14px;text-decoration:none;color:var(--ink);background:var(--paper);white-space:nowrap}
 @media(hover:hover){.support a.cta:hover{background:var(--band)}}
 @media(max-width:480px){.support{gap:10px}.support .txt{min-width:140px}.support a.cta{width:100%;text-align:center}}
+
+/* email gate */
+.gate{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;padding:20px;
+  background:rgba(20,24,26,.55);backdrop-filter:blur(3px)}
+.gate.show{display:flex;animation:gfade .2s ease-out}
+@keyframes gfade{from{opacity:0}to{opacity:1}}
+.gatecard{background:var(--card);border:1.5px solid var(--ink);max-width:440px;width:100%;
+  box-shadow:8px 8px 0 var(--ink);padding:0}
+.gatehead{background:var(--ink);color:var(--paper);font-family:"IBM Plex Mono",monospace;
+  font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;padding:10px 16px;display:flex;justify-content:space-between}
+.gatebody{padding:22px 20px 24px}
+.gatebody h3{font-family:"Archivo",sans-serif;font-weight:900;font-stretch:110%;text-transform:uppercase;
+  font-size:22px;letter-spacing:-.01em;margin:0 0 8px}
+.gatebody p{font-size:14px;color:var(--soft);margin:0 0 16px;line-height:1.5}
+.gatebody input{width:100%;font-family:"IBM Plex Mono",monospace;font-size:16px;padding:12px;
+  border:none;border-bottom:2.5px solid var(--ink);background:var(--band);color:var(--ink);border-radius:0}
+.gatebody input:focus{outline:none;border-bottom-color:var(--gold);background:#fff}
+.gateerr{color:var(--red);font-size:12.5px;margin-top:8px;min-height:16px}
+.gatebtns{display:flex;gap:10px;margin-top:16px}
+.gatebtns .btn{flex:1}
+.gateskip{background:none;border:none;color:var(--soft);font-family:"IBM Plex Mono",monospace;font-size:12px;
+  text-decoration:underline;cursor:pointer;padding:10px;letter-spacing:.04em}
 </style>
 </head>
 <body>
@@ -248,6 +270,22 @@ footer a{color:var(--green);cursor:pointer;text-decoration:underline}
        target="_blank" rel="noopener">Visit valim.ai</a>
   </div>
 
+  <div class="gate" id="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <div class="gatecard">
+      <div class="gatehead"><span>Before you start</span><span>TaxDrills</span></div>
+      <div class="gatebody">
+        <h3 id="gateTitle">Save your progress</h3>
+        <p>Drop your email so I can save where you left off and send the occasional new-question pack. One field, then you are drilling.</p>
+        <input type="email" id="gateEmail" placeholder="you@example.com" autocomplete="email" inputmode="email" spellcheck="false">
+        <div class="gateerr" id="gateErr"></div>
+        <div class="gatebtns">
+          <button class="btn primary" id="gateGo" style="flex:2">Start drilling</button>
+        </div>
+        <div style="text-align:center"><button class="gateskip" id="gateSkip">Skip for now</button></div>
+      </div>
+    </div>
+  </div>
+
   <footer class="small">
     Educational drills on general U.S. federal tax law - not tax, legal, or accounting advice. Dollar limits are for the tax year stated in each question and change annually.
     &nbsp;·&nbsp;<a id="privLink">Privacy</a>
@@ -259,6 +297,41 @@ footer a{color:var(--green);cursor:pointer;text-decoration:underline}
 "use strict";
 /* ---- analytics helper (no-ops if GA blocked) ---- */
 function track(name,params){try{if(typeof gtag==="function")gtag("event",name,params||{})}catch(e){}}
+
+/* ---- email capture gate ---- */
+var EMAIL_ENDPOINT="https://script.google.com/macros/s/AKfycbw25WY1gfaVgW2T4RSE2rHo5zcCQQJz2gVsLhdQGL_4XtoFo2YUSHreDNxhv4BZ7a_U/exec";
+var _pendingTopic=null;
+function hasEmail(){try{return !!localStorage.getItem("taxdrills_email")}catch(e){return false}}
+function realLesson(topicLock){ _lessonImpl(topicLock); }
+function gateThen(topicLock){
+  if(hasEmail()){ realLesson(topicLock); return; }
+  _pendingTopic=topicLock;
+  var g=document.getElementById("gate"); g.classList.add("show");
+  var inp=document.getElementById("gateEmail"); document.getElementById("gateErr").textContent="";
+  setTimeout(function(){inp.focus()},50);
+}
+function gateSubmit(){
+  var inp=document.getElementById("gateEmail"), err=document.getElementById("gateErr");
+  var v=(inp.value||"").trim();
+  if(v.indexOf("@")<1 || v.indexOf(".")<0){ err.textContent="That does not look like an email."; return; }
+  try{localStorage.setItem("taxdrills_email",v)}catch(e){}
+  track("email_captured",{});
+  try{
+    fetch(EMAIL_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body:JSON.stringify({email:v,source:"taxdrills",ref:document.referrer||""})});
+  }catch(e){}
+  document.getElementById("gate").classList.remove("show");
+  realLesson(_pendingTopic);
+}
+function gateClose(skip){
+  document.getElementById("gate").classList.remove("show");
+  if(skip){ try{localStorage.setItem("taxdrills_email","skipped")}catch(e){} realLesson(_pendingTopic); }
+}
+document.getElementById("gateGo").onclick=gateSubmit;
+document.getElementById("gateSkip").onclick=function(){gateClose(true)};
+document.getElementById("gateEmail").addEventListener("keydown",function(e){if(e.key==="Enter")gateSubmit()});
+document.getElementById("gate").addEventListener("click",function(e){if(e.target.id==="gate")gateClose(false)});
+
 /* ================= topics ================= */
 const TOPICS=[
  {id:"basics", m:"1040", name:"Filing Basics", desc:"Statuses, dependents, OBBBA changes"},
@@ -518,14 +591,14 @@ function home(){
      <button class="btn primary" id="adaptive" style="flex:1">Practice - adaptive session</button>
    </div>
    <div class="method small">Weak ledgers surface more often · misses return on a one-day interval · difficulty tiers unlock as your ring fills · fresh numbers in every computational drill. Tap a ledger to drill one topic.</div>`;
-  V.querySelectorAll(".topic").forEach(el=>el.onclick=()=>{track("topic_selected",{topic:el.dataset.t,mastery:Math.round(S.mastery[el.dataset.t])});lesson(el.dataset.t)});
-  document.getElementById("adaptive").onclick=()=>lesson(null);
-  const hs=document.getElementById("heroStart");if(hs)hs.onclick=()=>lesson(null);
+  V.querySelectorAll(".topic").forEach(el=>el.onclick=()=>{track("topic_selected",{topic:el.dataset.t,mastery:Math.round(S.mastery[el.dataset.t])});gateThen(el.dataset.t)});
+  document.getElementById("adaptive").onclick=()=>gateThen(null);
+  const hs=document.getElementById("heroStart");if(hs)hs.onclick=()=>gateThen(null);
 }
 
 /* ================= lesson runtime ================= */
 let L;
-function lesson(topicLock){
+function _lessonImpl(topicLock){
   touchStreak();hdr();
   L={items:buildLesson(topicLock),i:0,right:0,xp:0,deltas:{},lock:topicLock,t0:Date.now()};
   track("session_start",{mode:topicLock?"topic_drill":"adaptive",topic:topicLock||"mixed",day_streak:S.streak,total_sessions:S.sessions});
@@ -593,7 +666,7 @@ function results(){
       <button class="btn" id="homeB">Ledgers</button>
     </div></div>
   <!-- <div class="adslot">AdSense unit B (results screen - best viewability)</div> -->`;
-  document.getElementById("again").onclick=()=>lesson(L.lock);
+  document.getElementById("again").onclick=()=>realLesson(L.lock);
   document.getElementById("homeB").onclick=home;
 }
 
